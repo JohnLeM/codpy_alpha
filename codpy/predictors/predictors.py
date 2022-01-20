@@ -70,8 +70,6 @@ def random(**codpy_param):
     # scenario_generator_.compare_plot(axis_label = "Ny",field_label="discrepancy_errors")
     # ###################################
 
-print("predictors loaded") 
-
 def main_test(**codpy_param):
     random(**codpy_param)
 

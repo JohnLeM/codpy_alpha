@@ -1884,5 +1884,3 @@ class scenario_generator:
 
     def compare_plots(self,axis_field_labels, **kwargs):
         multi_plot(axis_field_labels,self.compare_plot_ax, **kwargs)
-
-print("codpy_tools loaded") 

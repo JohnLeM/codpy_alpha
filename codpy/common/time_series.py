@@ -477,6 +477,3 @@ def get_scenarios(**kwargs):
     scenarios = ts_scenario_generator()
     scenarios.run_scenarios(dic_kwargs, data_accumulator())
     return scenarios
-
-
-print("time_series loaded")

@@ -556,8 +556,6 @@ class shelf_data_generator(raw_data_generator):
         return self.copy_data(shelf_data_generator())
 
 
-print("data_generator loaded") 
-
 if __name__ == "__main__":
     def my_fun(x):
         import numpy as np

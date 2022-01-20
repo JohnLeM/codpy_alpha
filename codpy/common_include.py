@@ -1,4 +1,3 @@
-print("common_include entrypoint") 
 import os,sys
 import numpy as np
 #######global variables#######
@@ -23,4 +22,3 @@ codpy_book_fig_path = os.path.join(codpy_book_path,"CodPyFigs")
 from codpy_tools import *
 plt.rc('font', size=6)
 #######################################
-print("common_include loaded") 

@@ -52,10 +52,3 @@ def cross_validation_score(x):
         index += 1
         print(r2_score(x[test_index], test))
     plt.show()  
-
-
-
-print("scikit_tools loaded") 
-
-
-
