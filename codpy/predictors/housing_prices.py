@@ -2,7 +2,7 @@ import os,sys
 import numpy as np
 import pandas as pd
 import time as time
-import codpy as cd
+import codpy.codpy as cd
 from pathlib import Path
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)

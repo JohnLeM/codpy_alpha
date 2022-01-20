@@ -17,9 +17,8 @@ class scikitClusterPredictor(standard_cluster_predictor,add_confusion_matrix):
         from sklearn.cluster import KMeans
         init = kwargs.get('init','k-means++')
         random_state = kwargs.get('random_state',None)
-        num_threads = kwargs.get('num_threads',-1)
         kmeans = KMeans(n_clusters=self.Ny, init = init, 
-        random_state = random_state, n_jobs = num_threads).fit(self.x)
+        random_state = random_state).fit(self.x)
         self.estimator = kmeans
         self.y = kmeans.cluster_centers_
         self.fy = kmeans.labels_
@@ -34,13 +33,11 @@ class scikitClusterClassifier(standard_cluster_predictor,add_confusion_matrix):
     def predictor(self,**kwargs):
         import pandas as pd
         from sklearn.cluster import KMeans
-        num_threads = kwargs.get('num_threads',-1)
-
         # import ctypes 
         # mkl_rt = ctypes.WinDLL('mkl_rt.1.dll')
         # mkl_rt.mkl_set_num_threads(ctypes.byref(ctypes.c_int(10)))
 
-        kmeans = KMeans(n_clusters=self.Ny, random_state=1, n_jobs = num_threads).fit(self.x)
+        kmeans = KMeans(n_clusters=self.Ny, random_state=1).fit(self.x)
         self.f_x = kmeans.predict(self.x) 
         self.estimator = kmeans
         self.y = kmeans.cluster_centers_ 

@@ -247,21 +247,25 @@ def main_test(**codpy_param):
     credit_card_data(**codpy_param)
     credit_card_fraud(**codpy_param)
 
+codpy_param = {'rescale:xmax': 1000,
+'rescale:seed':42,
+'sharp_discrepancy:xmax':1000,
+'sharp_discrepancy:seed':30,
+'sharp_discrepancy:itermax':5,
+'discrepancy:xmax':500,
+'discrepancy:ymax':500,
+'discrepancy:zmax':500,
+'discrepancy:nmax':2000,
+'num_threads':25,
+'validator_compute':['accuracy_score','discrepancy_error','inertia'],
+}
+
+def get_params() : return codpy_param
+
+def blob_test():
+    blob(**get_params(), scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
 
 if __name__ == "__main__":
-
-
-    codpy_param = {'rescale:xmax': 1000,
-    'rescale:seed':42,
-    'sharp_discrepancy:xmax':1000,
-    'sharp_discrepancy:seed':30,
-    'sharp_discrepancy:itermax':5,
-    'discrepancy:xmax':500,
-    'discrepancy:ymax':500,
-    'discrepancy:zmax':500,
-    'discrepancy:nmax':2000,
-    'num_threads':25,
-    'validator_compute':['accuracy_score','discrepancy_error','inertia'],
-    }
-    main_test(**codpy_param)
+    blob(**get_params(), scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
+    # main_test(**codpy_param)
     pass

@@ -41,7 +41,7 @@ We now need to update the environment variables.
   Use the following instructions:
     * import os, sys
     * sys.path.append(os.path.join(sys.exec_prefix, "Lib","site-packages","codpy"))
-    * import codpy as cd
+    * import codpy.codpy as cd
     * dir(cd)
 
 # Additional software installations

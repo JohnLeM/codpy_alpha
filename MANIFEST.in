@@ -1,1 +1,1 @@
-recursive-include codpy *
+recursive-include codpy *.pyd

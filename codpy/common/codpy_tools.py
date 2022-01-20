@@ -7,7 +7,8 @@ from mpl_toolkits.mplot3d import axes3d,Axes3D
 import abc 
 import datetime
 import copy
-import codpy as cd
+import codpy
+import codpy.codpy as cd
 
 ################general utilities from cebpl######################################
 
@@ -510,7 +511,7 @@ class alg:
     #set_sampler_kernel = kernel_setters.kernel_helper(kernel_setters.set_matern_tensor_kernel, 3,1e-8 ,map_setters.set_standard_mean_map)
 
     # def set_sampler_kernel(polynomial_order:int = 2,regularization:float = 0,set_map = map_setters.set_unitcube_map):
-    #     import codpy as cd
+    #     import codpy.codpy as cd
     #     cd.kernel.set_polynomial_order(polynomial_order)
     #     cd.kernel.set_regularization(regularization)
     #     cd.set_kernel("tensornorm")
