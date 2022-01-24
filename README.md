@@ -36,66 +36,62 @@ In the console, enter "*install.packages("rmarkdown")*" to install [RMarkdown](h
 
 ## Cloning repo
 
-Download the codpy repo at [codpy alpha](https://rstudio.com/products/rstudio/release-notes/) to <path/to/repo>
+Download the codpy repo at [codpy alpha](https://github.com/JohnLeM/codpy_alpha) to your location <path/to/codpyrepo>
 
-```
-https://github.com/JohnLeM/codpy_alpha.git
-```
+If you don't have access to this repo, [Contact Us](mailto:jean-marc.mercoer@mpg-partners.com) to have access, as you should have received an invitation to join the codpy repository (from the Github account JohnLeM).
 
-### GitHub & Codpy
+<img src="README.img\Invitation.png" width="200">
 
-By now, you should have received an invitation to join the team repository (from the Github account JohnLeM).
-
-<img src="README.img\Invitation.png" width="700">
-
-View the invitation : this will open a github tab.
-Click on code, and choose to open with GitHub Desktop or download directly from your browser.
-
-<img src="README.img\github_desktop.png" width="700">
 
 ## Installation
 
 ### prerequisite
 
 We suppose that there is a valid python installation on the host machine. The reader can 
-* either use its main python environment <path/to/python39>
-* or create a virtual python environment <path/to/venv>, a good practice that we describe in the rest of this section.
+* either use its main python environment ```<path/to/python39>```
+* or create a virtual python environment ```<path/to/venv>```, a good practice that we describe in the rest of this section.
 
-First open a command shell ```cmd```, then create a virtual environment
+First open a command shell ```cmd```,  create a virtual environment and activate it.
 
 ```
-<path/to/python39>\Scripts\pip3.9 install virtualenv
-<path/to/python39>python -m virtualenv <path/to/venv>
+python -m venv .\venv
+.\venv\Scripts\activate
 ```
-*NOTE* : In the rest of the installation procedure, we consider a virtual environment <path/to/venv>. One can replace with <path/to/python39> if a main environment is desired.
+*NOTE* : In the rest of the installation procedure, we consider a virtual environment <path/to/venv>. One can replace with <path/to/python39> if a main environment installation is desired, for dev purposes for instance.
 
 ### pip install codpy
 
 Open a command shell ```cmd```, and pip install codpy
 
 ```
-<path/to/venv/Script>pip install <path\to\repo>\dist\codpy-0.0.1-cp39-cp39-win_amd64.whl
+pip install <path/to/codpyrepo>/dist/codpy-0.0.1-cp39-cp39-win_amd64.whl
 ```
 The installation procedure might take some minutes depending on your internet connection.
 
 ### Test codpy
 
-open a python shell
+open a python shell and import codpy
 ```
-<path/to/venv/Scripts>python
+python
 ```
-
+```
+import codpy
+```
 
 # Testing with Visual Studio Code
 
-You can now check the installation worked.
-With Visual Studio Code, open the *Example1D2D.py* file found in the *\codpy\codpy\apps\Examples1D2D* folder.
+You can your visual studio installation.
+
+ - With Visual Studio Code, open the ```<path/to/codpyrepo>``` folder and select for instance the file  ```<path/to/codpyrepo>/codpy/clustering/clustering.py```
 
 <img src="README.img\example_launch.png" width="700">
 
-Hit F5, then "Python File - Debug the currently active Python file", or just Ctrl + F5.
-If everything works, you should have this output :
 
-<img src="README.img\example_worked.png" width="700">
+ - Select your python interpreter (Shift+P) <img src="README.img\interpreter.png" width="300">
 
-Close all windows.
+
+- Hit F5. If everything works, you should have some figures, the first one being :
+
+<img src="README.img\example_worked.png" width="500">
+
+

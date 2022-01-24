@@ -254,14 +254,6 @@ class credit_card_fraud_data_generator(raw_data_generator):
                         f.write(chunk)
                 if method is not None: method(path_to_file=path_to_file,**kwargs)
 
-        def kaggle_api_file(data_set, path_to_file, **kwargs):
-            import kaggle
-            from kaggle.api.kaggle_api_extended import KaggleApi
-            api = KaggleApi()
-            api.authenticate()
-            api.dataset_download_files(data_set, path_to_file, **kwargs)
-
-        if not exists(path_to_file): kaggle_api_file(data_set="mlg-ulb/creditcardfraud",path_to_file = path_to_file, unzip = True)
         data = pd.read_csv(path_to_file)
         return data
     def copy(self):

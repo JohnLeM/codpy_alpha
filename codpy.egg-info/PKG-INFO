@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: codpy
+Version: 0.0.1
+Summary: An RKHS based module for machine learning and data mining
+Home-page: https://github.com/johnlem/codpy_alpha
+Author: jean-marc mercier
+Author-email: jeanmarc.mercier@gmail.com
+Maintainer: jean-marc mercier
+License: new BSD
+Platform: UNKNOWN
+Classifier: development status :: alpha
+Classifier: Programming Language :: C++
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Scientific/EngineeringProgramming Language :: Python :: 3.9.7
+Classifier: Operating System :: Microsoft :: Windows
+License-File: license
+
+UNKNOWN
+

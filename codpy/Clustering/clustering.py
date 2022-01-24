@@ -265,7 +265,6 @@ def main():
     blob(**get_params(), scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
 
 if __name__ == "__main__":
-    credit_card_fraud(**get_params())
     main()
     # main_test(**codpy_param)
     pass
