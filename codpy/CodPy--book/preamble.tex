@@ -1,0 +1,175 @@
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\usepackage{graphics}
+\usepackage{amsmath, amsfonts, amsthm, amssymb, amscd,a4wide}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{float}
+\usepackage{epstopdf}
+\usepackage{subcaption}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\-\oldmarginpar[\raggedleft\footnotesize #1]%
+{\raggedright\footnotesize #1}}
+
+%\usepackage[linesnumbered,ruled]{algorithm2e}
+
+%%
+
+% ces lignes permet de ne pas mettre en couleurs les liens hypertextes dans le fichier PDF
+% cependant il est toujours possible de cliquer dessus
+%
+
+\usepackage{xcolor} %package pour les couleurs
+\usepackage{tikz} % package principal TikZ
+\usetikzlibrary{arrows} %librairieoptionnelle PGF
+\usepackage{adjustbox}
+
+\usepackage{slashed}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{linktoc = all}                % hyperref settings
+%\hypersetup{pdfborderstyle={/S/U/W 0.5}}  % hyperref settings
+\hypersetup{hidelinks}
+\hypersetup{bookmarksnumbered}
+\pdfstringdefDisableCommands{%
+  \def\({}%
+  \def\){}%
+  \def\\{}%
+  \def\infty{\042\036}%
+  \def\Tr{Tr }%
+}
+%%%%%%%%% 
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theoremdefinition}[definition]{Theorem and Definition}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}[definition]{Example}
+\newtheorem{HP}{Highlighted point}
+% 
+\numberwithin{equation}{section}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand \be   {\begin{equation}}
+\newcommand \bel {\begin{equation}\label}
+\newcommand \ee   {\end{equation}}
+\newcommand \dist {{\mbox{\em dist }}}
+\newcommand \sgn {{\text{sgn }}}
+\newcommand \meas {{\text{meas }}}
+\newcommand \supp {{\text{supp }}}
+\newcommand \Id   {{\text{Id}}}
+\newcommand \smin {s^{\text{min}}}
+\newcommand \smax {s^{\text{max}}}
+\newcommand \lmin {{\lam^{\text{min}}}}
+\newcommand \lmax {{\lam^{\text{max}}}}
+\newcommand \RR    {\mathbb{R}}
+\newcommand \NN    {\mathbb{N}}
+\newcommand \ZZ    {\mathbb{Z}}
+\newcommand \QQ    {\mathbb{Q}}
+\newcommand \PP    {\mathbb{P}}
+\newcommand \EE    {\mathbb{E}}
+\newcommand \Rp    {\mathbb{R}^\plus }
+\newcommand \RRR    {\mathbf{R}}
+\newcommand \SSS    {\mathbf{S}}
+\newcommand \Scal    {\mathcal{S}}
+\newcommand \Pcal    {\mathcal{P}}
+\newcommand \Tbar {\overline T}
+\newcommand \Acal {\mathcal A}
+\newcommand \Bcal {\mathcal B}
+\newcommand \Ccal    {\mathcal{C}}
+\newcommand \Mcal    {\mathcal{M}}
+\newcommand \Lcal    {\mathcal{L}}
+\newcommand \Jcal    {\mathcal{J}}
+\newcommand \Kcal    {\mathcal{K}}
+\newcommand \Wbf {\mathbf W}
+\newcommand \Hcal    {\mathcal{H}}
+\newcommand \Tcal    {\mathcal{T}}
+\newcommand \lam   {\lambda}
+\newcommand \sig   {\sigma}
+\newcommand \gam   {\gamma}
+\newcommand \ubar   {\overline u}
+\newcommand \HH    {\mathcal{H}}
+\newcommand \CC    {\mathcal{C}}
+\newcommand \Ncal    {\mathcal{N}}
+\newcommand \DDD    {\mathcal{D}}
+\newcommand \RN    {{\RR^N}}
+\newcommand \eps   {\epsilon}
+\newcommand \Lam   {\Lambda}
+\newcommand \BB    {{\mathcal B}}
+\newcommand \WW    {{\mathcal W}}
+\newcommand \MM    {{M}}
+\newcommand \AAA    {{\mathcal A}}
+\newcommand \JJ    {{\mathcal J}}
+\newcommand \II    {{\mathcal I}}
+\newcommand \LLL    {{\mathbf L}}
+\newcommand \VVV    {{\mathbf V}}
+\newcommand \QQQ    {{\mathbf Q}}
+\newcommand \Rd    {{\mathbb{R}^d}}
+\newcommand \CCD    {{\mathbb{C}^D}}
+%
+\newcommand \del   {\partial}
+\newcommand \blam  {{\underline\lambda}}
+\newcommand \lamb  {{\overline\lambda}}
+\newcommand \Bzero    {{\mathcal{B}_{\delta_0}}}
+\newcommand \Bone    {{\mathcal{B}_{\delta_1}}}
+\newcommand \Btwo    {{\mathcal{B}_{\delta_2}}}
+\newcommand \la         \langle
+\newcommand \ra     \rangle
+\newcommand \ab     {\overline a}
+\newcommand \mmm  {p}
+
+\newcommand \Ybf {\mathbf Y} 
+\newcommand \Sbf {\mathbf S} 
+\newcommand \hbf {\mathbf h} 
+
+\newcommand \Sbar {\overline S}
+\newcommand \Aund {\underline{\Acal}}
+\newcommand \Aove {\overline{\Acal}}
+
+\newcommand \plus {+}
+
+\newcommand \RD {{\mathbb R}^D}
+
+
+\usepackage{mathrsfs}
+
+%*************************************************************************************
+\usepackage{authblk}
+
+
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+
+
+ 
+ 
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black ]
+\tikzstyle{io} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black] 
+%\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, text - white, draw=black, fill=black!30] 
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{bbox} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text = white, draw=black, fill=black]
+\tikzstyle{pp} = [rectangle, minimum width=3cm, minimum height=0.5cm, text centered, draw=black] 
+\tikzstyle{pp1} = [rectangle, draw=black!50, thick, minimum width=0.5cm, minimum height = 0.5cm]
+\tikzstyle{crl} = [circle, draw=black!50, thick, minimum size = 1.5cm]
+\tikzstyle{crl1} = [circle, draw=black!50, thick, minimum size = 0.7cm]
+\tikzstyle{line} = [draw, -latex']
+\newsavebox{\tempbox}
+
+\tikzstyle{block} = [draw, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
