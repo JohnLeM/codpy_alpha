@@ -1,6 +1,6 @@
 import os,sys
 import time as time
-import codpy.codpy as cd
+import codpypyd as cd
 from codpy_tools import *
 from scikit_tools import *
 import matplotlib.pyplot as plt
@@ -218,7 +218,7 @@ def codpy_distance(p,q, type, rescale = True):
     if(type == 'H'):
         return hellinger(p,q)
     elif(type == 'D'):
-        import codpy.codpy as cd
+        import codpypyd as cd
         return op.discrepancy(p,q, rescale = rescale)
 
 def compare_distances(p,q):
@@ -297,7 +297,7 @@ def experiment(Num,N,D, M = N):
 def test(N,D, arg = 'min'):
     import numpy as np
     import pandas as pd
-    import codpy.codpy as cd
+    import codpypyd as cd
 
     switcher = {
     1: np.min,

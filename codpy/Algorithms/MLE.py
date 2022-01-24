@@ -1,5 +1,5 @@
 import os, sys
-import codpy.codpy as cd
+import codpypyd as cd
 from pathlib import Path
 dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path = Path(dir_path).parent

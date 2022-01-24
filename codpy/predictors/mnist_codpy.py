@@ -2,7 +2,6 @@ import os,sys
 import numpy as np
 import pandas as pd
 import time as time
-import codpy.codpy as cd
 from pathlib import Path
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
@@ -117,9 +116,7 @@ def mnist_test(scenarios_list, **kwargs):
         mp_title = "Benchmark methods",mp_ncols=1
     )
 
-if __name__ == "__main__":
-    import tensorflow as tf
-    scenarios_list = [ (784, 2**(i), 2**(i-2), 10000)  for i in np.arange(5,11,1)]
+def get_params():
 
     kwargs = {'rescale:xmax': 1000,
     'rescale:seed':42,
@@ -163,5 +160,12 @@ if __name__ == "__main__":
     'num_class': 10,
     'num_boost_round':100}
 
-    mnist_test(scenarios_list,**{**kwargs})     
+    return kwargs
+
+def main():
+    scenarios_list = [ (784, 2**(i), 2**(i-2), 10000)  for i in np.arange(5,11,1)]
+    mnist_test(scenarios_list,**get_params())     
+
+if __name__ == "__main__":
+    main()     
     pass  

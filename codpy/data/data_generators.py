@@ -222,7 +222,47 @@ class credit_card_fraud_data_generator(raw_data_generator):
         z = z.drop(['Class'],axis=1)
         return x,fx,y,fy,z,fz
     def get_raw_data(self,**kwargs):
-        data = pd.read_csv(os.path.join(data_path,"creditcardfraud.csv"))
+        from os.path import exists
+        url = '1pzqrcrtz1XLXGx7BKR9v4U_d7SZbEK1o'
+        path_to_file = os.path.join(data_path,"creditcardfraud.csv")
+
+        def unzip_file(path_to_file,extract_path = None,**kwargs):
+            import zipfile
+            if extract_path is None: extract_path = path_to_file
+            with zipfile.ZipFile(path_to_file, 'r') as zip_ref:
+                zip_ref.extractall(extract_path)
+
+        def download_api_file(file_id, path_to_file, method = None, **kwargs):
+            import googleapiclient
+            request = googleapiclient.drive_service.files().get_media(fileId=file_id)
+            fh = googleapiclient.io.BytesIO()
+            downloader = googleapiclient.MediaIoBaseDownload(fh, request)
+            done = False
+            while done is False:
+                status, done = downloader.next_chunk()
+                print("Download %d%%." % int(status.progress() * 100) )       
+
+        def download_url_file(url, path_to_file, method = None, **kwargs):
+            import requests
+            with requests.get(url, stream=True) as r:
+                r.raise_for_status()
+                with open(path_to_file, 'wb') as f:
+                    for chunk in r.iter_content(chunk_size=8192): 
+                        # If you have chunk encoded response uncomment if
+                        # and set chunk_size parameter to None.
+                        #if chunk: 
+                        f.write(chunk)
+                if method is not None: method(path_to_file=path_to_file,**kwargs)
+
+        def kaggle_api_file(data_set, path_to_file, **kwargs):
+            import kaggle
+            from kaggle.api.kaggle_api_extended import KaggleApi
+            api = KaggleApi()
+            api.authenticate()
+            api.dataset_download_files(data_set, path_to_file, **kwargs)
+
+        if not exists(path_to_file): kaggle_api_file(data_set="mlg-ulb/creditcardfraud",path_to_file = path_to_file, unzip = True)
+        data = pd.read_csv(path_to_file)
         return data
     def copy(self):
         return self.copy_data(credit_card_fraud_data_generator())
@@ -586,7 +626,7 @@ if __name__ == "__main__":
     set_kernel = kernel_setters.kernel_helper(kernel_setters.set_gaussian_kernel, 2, 1e-8 ,map_setters.set_mean_distance_map)
     from decision_tree_predictors import *
     from common_include import *
-    from clusteringCHK import *
+    from clustering import *
     from predictors import *
     DT_param = {
     'validator_compute': ['discrepancy_error'],

@@ -2,7 +2,6 @@ import os,sys
 import numpy as np
 import pandas as pd
 import time as time
-import codpy.codpy as cd
 from pathlib import Path
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
@@ -10,8 +9,6 @@ if parentdir not in sys.path:sys.path.append(parentdir)
 from common_include import *
 from data_generators import * 
 from predictors import * 
-from clusteringCHK import *
-
 
 ###initialization
 
@@ -115,9 +112,8 @@ def housingprices_test(**kwargs):
         mp_title = "Benchmark methods",mp_ncols=1
     )
 
-if __name__ == "__main__":
+def get_params():
     import tensorflow as tf
-
     kwargs = {'rescale:xmax': 1000,
     'rescale:seed':42,
     'sharp_discrepancy:xmax':1000,
@@ -153,6 +149,16 @@ if __name__ == "__main__":
     'num_class': 10,
     'num_boost_round':100}
 
+    return kwargs
+def main():
+    import tensorflow as tf
+    housingprices_test(**get_params())     
 
-    housingprices_test(**kwargs)        
+
+if __name__ == "__main__":
+    main()
+    pass    
+
+
+
 

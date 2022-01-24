@@ -160,21 +160,11 @@ def get_param(hist_depth=0,pred_depth=0):
     return params
 
 
-
-if __name__ == "__main__":
-  
+def main():
     # scenarios = get_scenarios(**get_param(),my_generator = [BTC_time_serie_generator], my_predictor = [BTC_forecast_predictor_codpy])
     # scenarios = get_scenarios(**get_param(),my_generator = [BTC_ts_optimal_generator], my_predictor = [BTC_forecast_optimal_codpy])
     # scenarios = get_scenarios(**get_param(),my_generator = [BTC_ts_mean_generator], my_predictor = [BTC_mean_predictor_codpy])
     scenarios = get_scenarios(**get_param(),my_generator = [BTC_ts_mean_generator] + [BTC_ts_optimal_generator for n in range(10)], my_predictor = [BTC_mean_predictor_codpy]+[BTC_forecast_optimal_codpy for n in range(10)])
-
-    # fz,f_z = scenarios.predictor.fz,scenarios.predictor.f_z
-    # data_generator.save_cd_data(scenarios.predictor,x_csv = os.path.join(data_path,"BTC","x.csv"),
-    #     fx_csv = os.path.join(data_path,"BTC","fx.csv"),
-    #     z_csv = os.path.join(data_path,"BTC","z.csv"),
-    #     fz_csv = os.path.join(data_path,"BTC","fz.csv"),
-    #     f_z_csv = os.path.join(data_path,"BTC","f_z.csv"))
-
     results = [scenarios.data_generator.format_output(scenarios.predictor.fz,**get_param())]
     for predictor,generator in zip(scenarios.accumulator.predictors,scenarios.accumulator.generators):
         debug = generator.format_output(predictor.f_z,**get_param()) 
@@ -183,4 +173,8 @@ if __name__ == "__main__":
     listlabels = ["observed","mean"]+["generated "+str(i) for i in range(len(scenarios.accumulator.predictors)) ]
     scenarios.plot_output(results = results,listlabels=listlabels,alphas = alphas,fun_x = lambda x : pd.to_datetime(x,format='%d/%m/%Y'),**get_param())
 
+
+if __name__ == "__main__":
+  
+    main()
     pass

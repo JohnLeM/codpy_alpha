@@ -8,7 +8,6 @@ if parentdir not in sys.path:sys.path.append(parentdir)
 from common_include import *
 from data_generators import *
 from predictors import *
-from mnist_codpy import *
 
 ####A standard run
 
@@ -239,13 +238,13 @@ def credit_card_fraud(**codpy_param):
     )
 
 def main_test(**codpy_param):
-    blob(**codpy_param, scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
-    mnist(**codpy_param)
-    company_stock_movements(**codpy_param)
-    german_credit(**codpy_param)
-    SP500_Yahoo(**codpy_param)
-    credit_card_data(**codpy_param)
-    credit_card_fraud(**codpy_param)
+    blob(**get_params(), scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
+    mnist(**get_params())
+    company_stock_movements(**get_params())
+    german_credit(**get_params())
+    SP500_Yahoo(**get_params())
+    credit_card_data(**get_params())
+    credit_card_fraud(**get_params())
 
 codpy_param = {'rescale:xmax': 1000,
 'rescale:seed':42,
@@ -262,10 +261,11 @@ codpy_param = {'rescale:xmax': 1000,
 
 def get_params() : return codpy_param
 
-def blob_test():
+def main():
     blob(**get_params(), scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
 
 if __name__ == "__main__":
-    blob(**get_params(), scenario_list=[ (2, 100, i,100 ) for i in np.arange(5,10,5)])
+    credit_card_fraud(**get_params())
+    main()
     # main_test(**codpy_param)
     pass

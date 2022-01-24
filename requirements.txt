@@ -1,6 +1,0 @@
-python==3.9.7
-matplotlib
-numpy
-tensorflow
-pandas
-mkl

@@ -70,35 +70,38 @@ def random(**codpy_param):
     # scenario_generator_.compare_plot(axis_label = "Ny",field_label="discrepancy_errors")
     # ###################################
 
-def main_test(**codpy_param):
-    random(**codpy_param)
+codpy_params = {'rescale:xmax': 1000,
+'rescale:seed':42,
+'sharp_discrepancy:xmax':1000,
+'sharp_discrepancy:seed':30,
+'sharp_discrepancy:itermax':5,
+'discrepancy:xmax':500,
+'discrepancy:ymax':500,
+'discrepancy:zmax':500,
+'discrepancy:nmax':2000}
+
+tf_param = {'epochs': 128,
+'batch_size':16,
+'validation_split':0.1,
+'loss':'mse',
+'optimizer':'adam',
+'layers':[8,64,64,64,1],
+'activation':['relu','relu','relu','relu','linear'],
+'metrics':['mse']}
+
+rbf_param = {'function': 'gaussian',
+'epsilon':None,
+'smooth':0.,
+'norm':'euclidean'}
+
+
+def get_params():
+    return {**kwargs,**tf_param,**rbf_param}
+
+def test():
+    random(**get_params())
 
 
 if __name__ == "__main__":
-    kwargs = {'rescale:xmax': 1000,
-    'rescale:seed':42,
-    'sharp_discrepancy:xmax':1000,
-    'sharp_discrepancy:seed':30,
-    'sharp_discrepancy:itermax':5,
-    'discrepancy:xmax':500,
-    'discrepancy:ymax':500,
-    'discrepancy:zmax':500,
-    'discrepancy:nmax':2000}
-
-    tf_param = {'epochs': 128,
-    'batch_size':16,
-    'validation_split':0.1,
-    'loss':'mse',
-    'optimizer':'adam',
-    'layers':[8,64,64,64,1],
-    'activation':['relu','relu','relu','relu','linear'],
-    'metrics':['mse']}
-
-    rbf_param = {'function': 'gaussian',
-    'epsilon':None,
-    'smooth':0.,
-    'norm':'euclidean'}
-
-
-    main_test(**{**kwargs,**tf_param,**rbf_param})
+    test(**{**kwargs,**tf_param,**rbf_param})
 
