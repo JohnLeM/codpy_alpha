@@ -64,8 +64,8 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Operating System :: Microsoft :: Windows',
     ],
-    install_requires=['pybind11','pandas>=1.0','numpy>=1.18','matplotlib>=3.2','mkl==2021.2.0','scikit-learn==1.0.2','scipy>=1.6.1',
-    'tensorflow','seaborn', 'scikit-image','tensorflow-datasets','torch','xgboost','jupyter','quantlib','xlrd','pydicom','tk'],
+    install_requires=['pybind11','pandas>=1.0','tk','numpy>=1.18','matplotlib>=3.2','mkl','scikit-learn==1.0.2','scipy>=1.6.1',
+    'tensorflow','seaborn', 'scikit-image','tensorflow-datasets','torch','xgboost','jupyter','quantlib','xlrd','pydicom'],
     extras_require={
     'win32': 'pywin32'
   }

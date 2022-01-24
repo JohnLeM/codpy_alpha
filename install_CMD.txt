@@ -1,0 +1,9 @@
+cd C:\informatique\Python37
+
+python -m venv C:\informatique\venv
+
+cd C:\informatique\venv\Scripts
+
+activate
+
+pip install git+https://github.com/JohnLeM/codpy_alpha
