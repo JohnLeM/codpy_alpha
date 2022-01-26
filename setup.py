@@ -1,7 +1,9 @@
-﻿import os,sys
-from setuptools import setup
+﻿import os,sys,fnmatch,subprocess
+from setuptools import setup, Extension, Command
+from distutils.command.build_py import build_py as _build_py
 
 __version__ = '0.0.1'
+
 DISTNAME = 'codpy'
 DESCRIPTION = 'An RKHS based module for machine learning and data mining'
 MAINTAINER = 'jean-marc mercier'
@@ -14,8 +16,27 @@ PROJECT_URLS = {
     'Documentation': 'https://',
     'Source Code': 'https://github.com/johnlem/codpy_alpha'
 }
-wheel_path = os.path.dirname(__file__)
-wheel_path = os.path.join(wheel_path,"dist",r"codpy-0.0.1-cp39-cp39-win_amd64.whl")
+
+
+def find_files(directory, pattern):
+    for root, dirs, files in os.walk(directory):
+        for basename in files:
+            if fnmatch.fnmatch(basename, pattern):
+                filename = os.path.join(root, basename)
+                yield filename
+
+def get_wheel_path(pattern = "*.whl"):
+    parent_path = os.path.dirname(__file__)
+    wheel_path = [file for file in find_files(parent_path,pattern)]
+    print(wheel_path)
+    if len(wheel_path): wheel_path = wheel_path[0]
+    return wheel_path
+
+class build_py(_build_py):
+    """Specialized Python source builder."""
+    subprocess.check_call([sys.executable, "-m", "pip", "install", get_wheel_path()])
+
+long_description = open("README.md","r")
 
 
 setup(
@@ -27,16 +48,9 @@ setup(
     description=DESCRIPTION,
     license=LICENSE,
     url=URL,
-    classifiers=[
-        # trove classifiers
-        # the full list is here: https://pypi.python.org/pypi?%3aaction=list_classifiers
-        'development status :: alpha',
-        'Programming Language :: C++',
-        'Programming Language :: Python',
-        'Topic :: Software Development',
-        'Topic :: Scientific/Engineering'
-        'Programming Language :: Python :: 3.9.7',
-        'Operating System :: Microsoft :: Windows',
-    ],
-    packages=[wheel_path]
+    cmdclass={'build_py': build_py},
+    long_description=long_description,
+    long_description_content_type='text/markdown'
 )
+
+    
