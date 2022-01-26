@@ -57,7 +57,7 @@ python -m venv .\venv
 Open a command shell ```cmd```, and pip install codpy
 
 ```
-pip install codpy==0.0.1
+pip install codpy
 ```
 or from the local repository
 
