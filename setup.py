@@ -48,7 +48,7 @@ setup(
     description=DESCRIPTION,
     license=LICENSE,
     url=URL,
-    cmdclass={'build_py': build_py},
+#    cmdclass={'build_py': build_py},
     long_description=long_description,
     long_description_content_type='text/markdown'
 )
