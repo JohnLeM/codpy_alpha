@@ -1,6 +1,43 @@
-# Installation 
+# Overview
 
-This document aims to describe the codpy installation process.
+Codpy is a kernel based, open source software library for high performance numerical computation, relying on the [RKHS](https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space) theory.
+It contains a set of core tools that we use for machine Learning, statistics and numerical simulations. As a machine learning platform, it enjoys some interesting properties :
+
+ * It is a numerically efficient machine learning platform. We provide benchmark tools to compare codpy to other popular machine learning platforms.
+ * It is a white box method. Any learning machine has access to worst-error bounds computations. These allow to compute confidence levels of prediction on any test set. Moreover, reproducibility properties of kernel methods allow to fully understand and explain obtained results.
+ * Each learning machine has access to all classical differential operators. These properties allow us to use this library with any PDE (partial differential equations) approach.
+ * Each learning machine has access to optimal transport tools, much needed for statistics.
+
+
+## Technical requirement
+
+This version of the library is CPUs based, and is tested on
+
+ * windows / amd64 platforms  
+
+## Directory structure
+
+Once installed (see below), navigate to ```<path\to\python39>\Lib\site-packages\codpy```. The directory structure should be
+
+* ```codpy```
+    *   ```docs```  
+        *   codpy-book.pdf is the codpy reference manual.  
+        *   *.ipynb are jupyter notebooks to reproduce the example of codpy book.  
+    *   ```com```  : low level tools and interface.  
+    *   ```pred``` : Wrappers to a number of prediction machines : kernels, neural networks, and more.  
+    *   ```data``` : Wrappers to data set handling  
+    *   ```proj``` : some examples of applications  
+        *   BTC_predictor.py    : an example of time serie prediction.  
+        *   clustering.py       : benchmarks of clustering methods.  
+        *   housing_prices.py   : benchmarks for the venerable Boston house price data set.  
+        *   mnist_codpy.py      : benchmarks for the MNIST data set.  
+        *   radon.py            : an application for medical imagery.  
+        *   reordering.py       : illustration of optimal transport tools.  
+    *  README.md        : this document  
+    *  __init__.py      : codpy loader  
+    *  include.py       : called by __init__  
+
+# Installation 
 
 Note: this installation process has been tested on
  * windows / amd64 platform 
@@ -62,7 +99,7 @@ pip install codpy
 or from the local repository
 
 ```
-pip install <path/to/codpyrepo>/dist/codpy-0.0.1-cp39-cp39-win_amd64.whl
+pip install <path/to/codpyrepo>/dist/codpy-XXXX.whl
 ```
 The installation procedure might take some minutes depending on your internet connection.
 
