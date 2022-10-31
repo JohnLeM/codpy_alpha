@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: codpy
-Version: 0.0.4
+Version: 0.1.7
 Summary: An RKHS based module for machine learning and data mining
 Home-page: https://github.com/johnlem/codpy_alpha
 Author: jean-marc mercier
@@ -15,10 +15,48 @@ Classifier: Topic :: Scientific/Engineering
 Classifier: Operating System :: Microsoft :: Windows :: Windows 10
 Description-Content-Type: text/markdown
 License-File: license
+License-File: COPYING.txt
+
+# Overview
+
+Codpy is a kernel based, open source software library for high performance numerical computation, relying on the [RKHS](https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space) theory.
+It contains a set of core tools that we use for machine Learning, statistics and numerical simulations. As a machine learning platform, it enjoys some interesting properties :
+
+ * It is a numerically efficient machine learning platform. We provide benchmark tools to compare codpy to other popular machine learning platforms.
+ * It is a white box method. Any learning machine has access to worst-error bounds computations. These allow to compute confidence levels of prediction on any test set. Moreover, reproducibility properties of kernel methods allow to fully understand and explain obtained results.
+ * Each learning machine has access to all classical differential operators. These properties allow us to use this library with any PDE (partial differential equations) approach.
+ * Each learning machine has access to optimal transport tools, much needed for statistics.
+
+
+## Technical requirement
+
+This version of the library is CPUs based, and is tested on
+
+ * windows / amd64 platforms  
+
+## Directory structure
+
+Once installed (see below), navigate to ```<path\to\python39>\Lib\site-packages\codpy```. The directory structure should be
+
+* ```codpy```
+    *   ```docs```  
+        *   codpy-book.pdf is the codpy reference manual.  
+        *   *.ipynb are jupyter notebooks to reproduce the example of codpy book.  
+    *   ```com```  : low level tools and interface.  
+    *   ```pred``` : Wrappers to a number of prediction machines : kernels, neural networks, and more.  
+    *   ```data``` : Wrappers to data set handling  
+    *   ```proj``` : some examples of applications  
+        *   BTC_predictor.py    : an example of time serie prediction.  
+        *   clustering.py       : benchmarks of clustering methods.  
+        *   housing_prices.py   : benchmarks for the venerable Boston house price data set.  
+        *   mnist_codpy.py      : benchmarks for the MNIST data set.  
+        *   radon.py            : an application for medical imagery.  
+        *   reordering.py       : illustration of optimal transport tools.  
+    *  README.md        : this document  
+    *  __init__.py      : codpy loader  
+    *  include.py       : called by __init__  
 
 # Installation 
-
-This document aims to describe the codpy installation process.
 
 Note: this installation process has been tested on
  * windows / amd64 platform 
@@ -52,8 +90,6 @@ In the console, enter "*install.packages("rmarkdown")*" to install [RMarkdown](h
 
 Download the codpy repo at [codpy alpha](https://github.com/JohnLeM/codpy_alpha) to your location <path/to/codpyrepo>
 
-If you don't have access to this repo, [Contact Us](mailto:jean-marc.mercoer@mpg-partners.com) to have access, as you should have received an invitation to join the codpy repository.
-
 ## Installation
 
 ### prerequisite
@@ -75,12 +111,12 @@ python -m venv .\venv
 Open a command shell ```cmd```, and pip install codpy
 
 ```
-pip install codpy==0.0.1
+pip install codpy
 ```
 or from the local repository
 
 ```
-pip install <path/to/codpyrepo>/dist/codpy-0.0.1-cp39-cp39-win_amd64.whl
+pip install <path/to/codpyrepo>/dist/codpy-XXXX.whl
 ```
 The installation procedure might take some minutes depending on your internet connection.
 
